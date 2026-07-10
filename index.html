@@ -1,149 +1,128 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="te">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>I Miss You Bangaram</title>
+    <title>మా లవ్ జర్నీ</title>
+    <!-- Tailwind CSS for styling -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- Animate.css for smooth animations -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/41.1/animate.min.css"/>
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        .royal-bg {
+            background: linear-gradient(135deg, #1a052e 0%, #4a0e4e 50%, #2c0c30 100%);
         }
-        body {
-            background-color: #0b090a;
-            color: #f8f9fa;
-            overflow-x: hidden;
+        .gold-text {
+            color: #d4af37;
+            text-shadow: 0px 2px 10px rgba(212, 175, 55, 0.4);
         }
-        /* Music Player Styling */
-        .music-container {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            z-index: 1000;
-            background: rgba(255, 255, 255, 0.1);
-            padding: 10px;
-            border-radius: 30px;
-            backdrop-filter: blur(5px);
+        .gold-border {
+            border-color: #d4af37;
+            box-shadow: 0 4px 20px rgba(212, 175, 55, 0.2);
         }
-        audio {
-            height: 30px;
-            width: 200px;
-        }
-        /* Sections Styling */
-        section {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 40px 20px;
-            text-align: center;
-            border-bottom: 1px solid #1a1616;
-        }
-        .intro-section {
-            background: linear-gradient(to bottom, #161a1d, #0b090a);
-        }
-        h1 {
-            font-size: 2.5rem;
-            color: #e5383b;
-            margin-bottom: 15px;
-            animation: fadeIn 2s ease-in-out;
-        }
-        h2 {
-            font-size: 2rem;
-            color: #ba181b;
-            margin-bottom: 10px;
-        }
-        p {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            max-width: 600px;
-            color: #f5f3f4;
-            margin: 15px auto;
-        }
-        span {
-            display: block;
-            margin-top: 30px;
-            font-size: 0.9rem;
-            color: #a4161a;
-            letter-spacing: 2px;
-            animation: bounce 2s infinite;
-        }
-        img {
-            max-width: 100%;
-            height: auto;
-            max-height: 450px;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(229, 56, 59, 0.2);
-            margin-bottom: 25px;
-            object-fit: cover;
-        }
-        /* Animations */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-            40% { transform: translateY(-10px); }
-            60% { transform: translateY(-5px); }
+        .music-btn {
+            background: linear-gradient(45deg, #d4af37, #aa7c11);
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
         }
     </style>
 </head>
-<body>
+<body class="royal-bg text-gray-100 font-sans min-h-screen flex flex-col items-center justify-between p-4 overflow-x-hidden">
 
-    <!-- Background Music -->
-    <div class="music-container">
-        <audio controls autoplay loop>
-            <source src="music.mp3" type="audio/mpeg">
-            Your browser does not support the audio element.
-        </audio>
+    <!-- Music Status and Player Button -->
+    <div class="w-full max-w-md mx-auto mt-4 text-center z-10 animate__animated animate__fadeInDown">
+        <button id="playBtn" class="music-btn text-purple-950 font-bold px-6 py-3 rounded-full text-lg flex items-center justify-center gap-3 mx-auto transition-transform active:scale-95">
+            <i id="musicIcon" class="fas fa-play"></i> <span id="btnText">మన స్పెషల్ సాంగ్ ప్లే చెయ్ 🎵</span>
+        </button>
+        <p class="text-xs text-amber-200/60 mt-2"><i class="fas fa-info-circle"></i> పాట వింటూ ఫొటోలు చూడు బంగారం!</p>
     </div>
 
-    <!-- Intro Section -->
-    <section class="intro-section">
-        <h1>Hello Bangaram ❤️</h1>
-        <p>I have something special for you... Ninnu entha miss avvuthunnano cheppalanipinchindi.</p>
-        <span>SCROLL SLOWLY ✨👇</span>
-    </section>
+    <!-- Hidden Audio Player using your direct audio source -->
+    <audio id="bgMusic" loop>
+        <source src="https://raw.githubusercontent.com/nagarjunarajanala1-alt/My-Lover/main/music.mp3" type="audio/mp3">
+    </audio>
 
-    <!-- Photo 1 -->
-    <section>
-        <img src="photo1.jpeg" alt="Our Memories">
-        <div>
-            <h2>❤️</h2>
-            <p>Mana madhya enni godavalu jarigina, mana madhya unna ee prema eppatiki thaggadhu. Ee photo chusina prati sari neetho gadipina aa moments gurthuki vasthayi. I miss those days, and I miss you so much...</p>
+    <!-- Main Content Container -->
+    <div class="w-full max-w-md mx-auto my-auto py-6 flex flex-col items-center justify-center text-center gap-6 z-10">
+        
+        <!-- Header Message -->
+        <h1 class="text-3xl font-extrabold gold-text animate__animated animate__heartBeat animate__infinite animate__slower tracking-wide">
+            ఐ మిస్ యూ బంగారం... ❤️
+        </h1>
+        
+        <!-- Beautiful Image Carousel / Stack -->
+        <div class="relative w-72 h-96 gold-border border-2 rounded-2xl overflow-hidden animate__animated animate__zoomIn bg-purple-950/40">
+            <!-- Image 1 -->
+            <img class="mySlides absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 opacity-100" 
+                 src="https://raw.githubusercontent.com/nagarjunarajanala1-alt/My-Lover/main/photo3.jpeg.png" alt="Royal Look 1">
+            <!-- Image 2 -->
+            <img class="mySlides absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 opacity-0" 
+                 src="https://raw.githubusercontent.com/nagarjunarajanala1-alt/My-Lover/main/photo1.jpeg.png" alt="Royal Look 2">
+            <!-- Image 3 -->
+            <img class="mySlides absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 opacity-0" 
+                 src="https://raw.githubusercontent.com/nagarjunarajanala1-alt/My-Lover/main/photo2.jpeg.jpg" alt="Beach Look">
+            <!-- Image 4 -->
+            <img class="mySlides absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 opacity-0" 
+                 src="https://raw.githubusercontent.com/nagarjunarajanala1-alt/My-Lover/main/photo4.jpeg.jpg" alt="Together">
         </div>
-    </section>
 
-    <!-- Photo 2 -->
-    <section>
-        <img src="photo2.jpeg" alt="My Favorite View">
-        <div>
-            <h2>❤️</h2>
-            <p>Konni sarlu nenu ninnu badha petti undochu, kani ninnu vadhilesi undalenu. Kopam lo unna kani, nee gurinche aalochisthu unta. Naa pranam kante ekkuva ninnu love chesthunna. Please naatho matladava? ❤️</p>
+        <!-- Heartfelt Love Quote -->
+        <div class="px-4 animate__animated animate__fadeInUp animate__delay-1s">
+            <p class="text-lg italic text-amber-100 leading-relaxed">
+                "నువ్వు పక్కన ఉంటే ఆ సంతోషమే వేరు... నువ్వు దూరంగా ఉంటే నా మనసంతా నీ ఆలోచనలే! నా ప్రతి శ్వాసలో నువ్వే ఉన్నావు బంగారం."
+            </p>
         </div>
-    </section>
+    </div>
 
-    <!-- Photo 3 -->
-    <section>
-        <img src="photo3.jpeg" alt="Together Forever">
-        <div>
-            <h2>❤️</h2>
-            <p>Nee chirunavvu chusi chala rojulu ayindi. Nuvvu pakkana lekapothe edho kolpoyinattu untundhi. Ee prapancham lo nenu deniki ekkuva bayapadata ante, ninnu dooram cheskodaniki matrame. Control cheskoleni kopam vachina, ninnu preminche naa manasu epatiki maaradhu.</p>
-        </div>
-    </section>
+    <!-- Decorative Footer particles -->
+    <div class="w-full text-center pb-4 text-xs text-amber-200/40 tracking-widest uppercase animate__animated animate__fadeIn animate__delay-2s">
+        Forever & Always Yours ✨
+    </div>
 
-    <!-- Photo 4 / Final Love Message (No Birthday Wish) -->
-    <section>
-        <img src="photo4.jpeg" alt="You Are My Everything">
-        <div>
-            <h1>Nuve Naa Prapancham ❤️</h1>
-            <p>Godavalu andari jeevitham lo untayi, kani avi mana premani thagginchalev. Nuvvu naa life lo unte aa dhairyam, aa happiness ye veru. Nuve naa "Premium Member". Epudu navvuthu undu. Stay Happy, Stay Blessed... My favourite person forever! ✨</p>
-        </div>
-    </section>
+    <!-- JavaScript for Slideshow and Music Control -->
+    <script>
+        // Automatic Image Slideshow
+        let slideIndex = 0;
+        showSlides();
 
+        function showSlides() {
+            let i;
+            let slides = document.getElementsByClassName("mySlides");
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.opacity = "0";
+            }
+            slideIndex++;
+            if (slideIndex > slides.length) {slideIndex = 1}    
+            slides[slideIndex-1].style.opacity = "1";  
+            setTimeout(showSlides, 4000); // Change image every 4 seconds
+        }
+
+        // Professional Music Control (Handles modern browser restrictions)
+        const music = document.getElementById('bgMusic');
+        const playBtn = document.getElementById('playBtn');
+        const musicIcon = document.getElementById('musicIcon');
+        const btnText = document.getElementById('btnText');
+
+        playBtn.addEventListener('click', function() {
+            if (music.paused) {
+                music.play().then(() => {
+                    musicIcon.className = "fas fa-pause";
+                    btnText.innerText = "పాట ఆపు ⏸️";
+                    playBtn.classList.remove('music-btn');
+                    playBtn.classList.add('bg-red-600', 'text-white', 'shadow-lg');
+                }).catch((error) => {
+                    console.log("Play failed: ", error);
+                    alert("దయచేసి మళ్లీ ట్రై చెయ్ బ్రదర్!");
+                });
+            } else {
+                music.pause();
+                musicIcon.className = "fas fa-play";
+                btnText.innerText = "మన స్పెషల్ సాంగ్ ప్లే చెయ్ 🎵";
+                playBtn.classList.remove('bg-red-600', 'text-white');
+                playBtn.classList.add('music-btn', 'text-purple-950');
+            }
+        });
+    </script>
 </body>
 </html>
