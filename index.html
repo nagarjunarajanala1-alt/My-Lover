@@ -21,7 +21,6 @@
             top: 16px;
             z-index: 50;
         }
-        /* Fixed image display without forced square cropping */
         .custom-img-container {
             width: 100%;
             max-width: 320px;
@@ -41,11 +40,6 @@
         <p class="text-xs text-purple-900 mt-2 bg-purple-100 py-1 px-3 rounded-full inline-block font-medium"><i class="fas fa-info-circle"></i> Song vinntu kindhaki scroll chey bangaram!</p>
     </div>
 
-    <!-- Hidden Audio Player -->
-    <audio id="bgMusic" loop>
-        <source src="https://raw.githubusercontent.com/nagarjunarajanala1-alt/My-Lover/main/music.mp3" type="audio/mp3">
-    </audio>
-
     <!-- Main Content Container -->
     <div class="w-full max-w-md mx-auto py-8 flex flex-col items-center gap-12 text-center">
         
@@ -57,7 +51,7 @@
         <!-- Section 1 -->
         <div class="w-full flex flex-col items-center gap-4 animate__animated animate__fadeInUp">
             <div class="custom-img-container">
-                <img class="w-full h-auto block" src="https://raw.githubusercontent.com/nagarjunarajanala1-alt/My-Lover/main/photo1.jpeg.png" alt="Photo 1">
+                <img class="w-full h-auto block" src="photo1.jpeg.png" alt="Photo 1" onerror="this.src='https://raw.githubusercontent.com/nagarjunarajanala1-alt/My-Lover/main/photo1.jpeg.png'">
             </div>
             <div class="px-4">
                 <p class="text-base italic text-gray-700 font-medium leading-relaxed bg-purple-50 p-4 rounded-xl border border-purple-100">
@@ -71,7 +65,7 @@
         <!-- Section 2 -->
         <div class="w-full flex flex-col items-center gap-4 animate__animated animate__fadeInUp">
             <div class="custom-img-container">
-                <img class="w-full h-auto block" src="https://raw.githubusercontent.com/nagarjunarajanala1-alt/My-Lover/main/photo2.jpeg.jpg" alt="Photo 2">
+                <img class="w-full h-auto block" src="photo2.jpeg.jpg" alt="Photo 2" onerror="this.src='https://raw.githubusercontent.com/nagarjunarajanala1-alt/My-Lover/main/photo2.jpeg.jpg'">
             </div>
             <div class="px-4">
                 <p class="text-base italic text-gray-700 font-medium leading-relaxed bg-purple-50 p-4 rounded-xl border border-purple-100">
@@ -85,7 +79,7 @@
         <!-- Section 3 -->
         <div class="w-full flex flex-col items-center gap-4 animate__animated animate__fadeInUp">
             <div class="custom-img-container">
-                <img class="w-full h-auto block" src="https://raw.githubusercontent.com/nagarjunarajanala1-alt/My-Lover/main/photo3.jpeg.png" alt="Photo 3">
+                <img class="w-full h-auto block" src="photo3.jpeg.png" alt="Photo 3" onerror="this.src='https://raw.githubusercontent.com/nagarjunarajanala1-alt/My-Lover/main/photo3.jpeg.png'">
             </div>
             <div class="px-4">
                 <p class="text-base italic text-gray-700 font-medium leading-relaxed bg-purple-50 p-4 rounded-xl border border-purple-100">
@@ -99,7 +93,7 @@
         <!-- Section 4 -->
         <div class="w-full flex flex-col items-center gap-4 animate__animated animate__fadeInUp">
             <div class="custom-img-container">
-                <img class="w-full h-auto block" src="https://raw.githubusercontent.com/nagarjunarajanala1-alt/My-Lover/main/photo4.jpeg.jpg" alt="Photo 4">
+                <img class="w-full h-auto block" src="photo4.jpeg.jpg" alt="Photo 4" onerror="this.src='https://raw.githubusercontent.com/nagarjunarajanala1-alt/My-Lover/main/photo4.jpeg.jpg'">
             </div>
             <div class="px-4">
                 <p class="text-base italic text-gray-700 font-medium leading-relaxed bg-purple-50 p-4 rounded-xl border border-purple-100">
@@ -115,9 +109,21 @@
         Forever & Always Yours ✨
     </div>
 
-    <!-- JavaScript for Music Control -->
+    <!-- JavaScript for Dynamic Music Loading and Control -->
     <script>
-        const music = document.getElementById('bgMusic');
+        // Create audio object programmatically to ensure robust cross-origin loading
+        const music = new Audio();
+        music.loop = true;
+        
+        // Try fallback link if primary path fails
+        music.src = "music.mp3";
+        music.addEventListener('error', function() {
+            if(music.src.indexOf('raw.githubusercontent.com') === -1) {
+                music.src = "https://raw.githubusercontent.com/nagarjunarajanala1-alt/My-Lover/main/music.mp3";
+                music.load();
+            }
+        });
+
         const playBtn = document.getElementById('playBtn');
         const musicIcon = document.getElementById('musicIcon');
         const btnText = document.getElementById('btnText');
@@ -130,7 +136,8 @@
                     playBtn.classList.remove('music-btn');
                     playBtn.classList.add('bg-red-600', 'text-white', 'shadow-lg');
                 }).catch((error) => {
-                    console.log("Play failed: ", error);
+                    console.log("Audio failed to play: ", error);
+                    alert("Chrome standard restriction valla context trigger kaledhu, please try again brother!");
                 });
             } else {
                 music.pause();
@@ -143,6 +150,7 @@
     </script>
 </body>
 </html>
+
 
 
 
