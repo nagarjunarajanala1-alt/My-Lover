@@ -148,7 +148,135 @@ Please naatho matladava Bangaram ❤️
 </p>
 
 </div>
+<!-- Photo 3 -->
 
+<div class="mt-12 photo animate__animated animate__fadeInUp">
+
+<img src="photo3.jpeg.png" alt="Photo 3">
+
+</div>
+
+<div class="card mt-5">
+
+<p class="italic text-gray-700">
+
+Nee chirunavvu chusi chala rojulu ayindi...
+
+Nuvvu pakkana lekapothe edo kolpoyinattu untundi...
+
+Control cheskoleni kopam vachina,
+
+ninnu preminche naa manasu eppatiki maaradhu...
+
+❤️
+
+</p>
+
+</div>
+
+<!-- Photo 4 -->
+
+<div class="mt-12 photo animate__animated animate__fadeInUp">
+
+<img src="photo4.jpeg.jpg" alt="Photo 4">
+
+</div>
+
+<div class="card mt-5">
+
+<p class="italic text-gray-700">
+
+Godavalu andari life lo untayi...
+
+Kani mana prema matram eppatiki taggadu...
+
+Nuve naa happiness...
+
+Nuve naa life...
+
+Forever Love You Bangaram ❤️
+
+</p>
+
+</div>
+
+<h2 class="text-3xl text-pink-600 font-bold mt-16 animate__animated animate__pulse animate__infinite">
+
+I Will Always Wait For You ❤️
+
+</h2>
+
+<p class="mt-4 text-gray-700">
+
+No matter what happens...
+
+My Love For You Will Never Change...
+
+✨ Forever & Always ✨
+
+</p>
+
+</div>
+
+<div id="hearts"></div>
+
+<script>
+
+const music=document.getElementById("music");
+
+const btn=document.getElementById("playBtn");
+
+const icon=document.getElementById("icon");
+
+const text=document.getElementById("text");
+
+btn.onclick=()=>{
+
+if(music.paused){
+
+music.play();
+
+icon.className="fas fa-pause";
+
+text.innerHTML="Song Aapu ⏸️";
+
+}else{
+
+music.pause();
+
+icon.className="fas fa-play";
+
+text.innerHTML="Mana Special Song Play Chey 🎵";
+
+}
+
+};
+
+setInterval(()=>{
+
+const heart=document.createElement("div");
+
+heart.className="heart";
+
+heart.innerHTML="❤";
+
+heart.style.left=Math.random()*100+"vw";
+
+heart.style.fontSize=(20+Math.random()*20)+"px";
+
+heart.style.animationDuration=(4+Math.random()*4)+"s";
+
+document.body.appendChild(heart);
+
+setTimeout(()=>{
+
+heart.remove();
+
+},7000);
+
+},400);
+
+</script>
 
 
 
