@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="te">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>మా లవ్ జర్నీ</title>
+    <title>Our Love Journey</title>
     <!-- Tailwind CSS for styling -->
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <!-- Animate.css for smooth animations -->
@@ -33,9 +33,9 @@
     <!-- Music Status and Player Button -->
     <div class="w-full max-w-md mx-auto mt-4 text-center z-10 animate__animated animate__fadeInDown">
         <button id="playBtn" class="music-btn text-purple-950 font-bold px-6 py-3 rounded-full text-lg flex items-center justify-center gap-3 mx-auto transition-transform active:scale-95">
-            <i id="musicIcon" class="fas fa-play"></i> <span id="btnText">మన స్పెషల్ సాంగ్ ప్లే చెయ్ 🎵</span>
+            <i id="musicIcon" class="fas fa-play"></i> <span id="btnText">Mana Special Song Play Chey 🎵</span>
         </button>
-        <p class="text-xs text-amber-200/60 mt-2"><i class="fas fa-info-circle"></i> పాట వింటూ ఫొటోలు చూడు బంగారం!</p>
+        <p class="text-xs text-amber-200/60 mt-2"><i class="fas fa-info-circle"></i> Song vinntu photos chudu bangaram!</p>
     </div>
 
     <!-- Hidden Audio Player using your direct audio source -->
@@ -48,57 +48,75 @@
         
         <!-- Header Message -->
         <h1 class="text-3xl font-extrabold gold-text animate__animated animate__heartBeat animate__infinite animate__slower tracking-wide">
-            ఐ మిస్ యూ బంగారం... ❤️
+            I Miss You Bangaram... ❤️
         </h1>
         
         <!-- Beautiful Image Carousel / Stack -->
         <div class="relative w-72 h-96 gold-border border-2 rounded-2xl overflow-hidden animate__animated animate__zoomIn bg-purple-950/40">
             <!-- Image 1 -->
             <img class="mySlides absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 opacity-100" 
-                 src="https://raw.githubusercontent.com/nagarjunarajanala1-alt/My-Lover/main/photo3.jpeg.png" alt="Royal Look 1">
+                 src="https://raw.githubusercontent.com/nagarjunarajanala1-alt/My-Lover/main/photo1.jpeg.png" alt="Photo 1">
             <!-- Image 2 -->
             <img class="mySlides absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 opacity-0" 
-                 src="https://raw.githubusercontent.com/nagarjunarajanala1-alt/My-Lover/main/photo1.jpeg.png" alt="Royal Look 2">
+                 src="https://raw.githubusercontent.com/nagarjunarajanala1-alt/My-Lover/main/photo2.jpeg.jpg" alt="Photo 2">
             <!-- Image 3 -->
             <img class="mySlides absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 opacity-0" 
-                 src="https://raw.githubusercontent.com/nagarjunarajanala1-alt/My-Lover/main/photo2.jpeg.jpg" alt="Beach Look">
+                 src="https://raw.githubusercontent.com/nagarjunarajanala1-alt/My-Lover/main/photo3.jpeg.png" alt="Photo 3">
             <!-- Image 4 -->
             <img class="mySlides absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 opacity-0" 
-                 src="https://raw.githubusercontent.com/nagarjunarajanala1-alt/My-Lover/main/photo4.jpeg.jpg" alt="Together">
+                 src="https://raw.githubusercontent.com/nagarjunarajanala1-alt/My-Lover/main/photo4.jpeg.jpg" alt="Photo 4">
         </div>
 
-        <!-- Heartfelt Love Quote -->
-        <div class="px-4 animate__animated animate__fadeInUp animate__delay-1s">
-            <p class="text-lg italic text-amber-100 leading-relaxed">
-                "నువ్వు పక్కన ఉంటే ఆ సంతోషమే వేరు... నువ్వు దూరంగా ఉంటే నా మనసంతా నీ ఆలోచనలే! నా ప్రతి శ్వాసలో నువ్వే ఉన్నావు బంగారం."
+        <!-- Dynamic Love Quotes (Changes with Photos) -->
+        <div class="px-4 min-h-[120px] flex items-center justify-center">
+            <p id="loveQuote" class="text-base italic text-amber-100 leading-relaxed animate__animated">
+                <!-- Text will be inserted here dynamically by JavaScript -->
             </p>
         </div>
     </div>
 
     <!-- Decorative Footer particles -->
-    <div class="w-full text-center pb-4 text-xs text-amber-200/40 tracking-widest uppercase animate__animated animate__fadeIn animate__delay-2s">
+    <div class="w-full text-center pb-4 text-xs text-amber-200/40 tracking-widest uppercase.">
         Forever & Always Yours ✨
     </div>
 
-    <!-- JavaScript for Slideshow and Music Control -->
+    <!-- JavaScript for Slideshow, Dynamic Text, and Music Control -->
     <script>
-        // Automatic Image Slideshow
+        // Array of your custom messages in normal English typing format
+        const quotes = [
+            "Mana madhya enni godavalu jarigina, mana madhya unna ee prema eppatiki thaggadhu. Ee photo chusina prati sari neetho gadipina aa moments gupthuki vasthayi. I miss those days, and I miss you so much...",
+            "Konni sarlu nenu ninnu badha petti undochu, kani ninnu vadhilesi undalenu. Kopam lo unna kani, nee gurinche aalochisthu unta. Naa pranam kante ekkuva ninnu love chesthunna. Please naatho matladava? ❤️",
+            "Nee chirunavvu chusi chala rojulu ayindi. Nuvvu pakkana lekapothe edho kolpoyinattu untundhi. Ee prapancham lo nenu deniki ekkuva bayapadata ante, ninnu dooram cheskodaniki matrame. control cheskoleni kopam vachina, ninnu preminche naa manasu epatiki maaradhu.",
+            "Godavalu andari jeevitham lo untayi, kani avi mana premani thagginchalev. Nuvvu naa life lo unte aa dharriyam, aa happiness ye veru. Nuve naa premium member nuve naa pranamcham..."
+        ];
+
         let slideIndex = 0;
         showSlides();
 
         function showSlides() {
             let i;
             let slides = document.getElementsByClassName("mySlides");
+            let quoteText = document.getElementById("loveQuote");
+            
             for (i = 0; i < slides.length; i++) {
                 slides[i].style.opacity = "0";
             }
+            
             slideIndex++;
             if (slideIndex > slides.length) {slideIndex = 1}    
+            
             slides[slideIndex-1].style.opacity = "1";  
-            setTimeout(showSlides, 4000); // Change image every 4 seconds
+            
+            // Text change with a smooth animation effect
+            quoteText.classList.remove('animate__fadeInUp');
+            void quoteText.offsetWidth; // Trigger reflow to restart animation
+            quoteText.innerText = quotes[slideIndex-1];
+            quoteText.classList.add('animate__fadeInUp');
+
+            setTimeout(showSlides, 6000); // Changes photo and text every 6 seconds so she has time to read
         }
 
-        // Professional Music Control (Handles modern browser restrictions)
+        // Music Control
         const music = document.getElementById('bgMusic');
         const playBtn = document.getElementById('playBtn');
         const musicIcon = document.getElementById('musicIcon');
@@ -108,17 +126,16 @@
             if (music.paused) {
                 music.play().then(() => {
                     musicIcon.className = "fas fa-pause";
-                    btnText.innerText = "పాట ఆపు ⏸️";
+                    btnText.innerText = "Song Aapu ⏸️";
                     playBtn.classList.remove('music-btn');
                     playBtn.classList.add('bg-red-600', 'text-white', 'shadow-lg');
                 }).catch((error) => {
                     console.log("Play failed: ", error);
-                    alert("దయచేసి మళ్లీ ట్రై చెయ్ బ్రదర్!");
                 });
             } else {
                 music.pause();
                 musicIcon.className = "fas fa-play";
-                btnText.innerText = "మన స్పెషల్ సాంగ్ ప్లే చెయ్ 🎵";
+                btnText.innerText = "Mana Special Song Play Chey 🎵";
                 playBtn.classList.remove('bg-red-600', 'text-white');
                 playBtn.classList.add('music-btn', 'text-purple-950');
             }
@@ -126,3 +143,4 @@
     </script>
 </body>
 </html>
+
