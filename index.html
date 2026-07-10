@@ -8,14 +8,10 @@
 
 <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 
-<link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-
-<link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/41.1/animate.min.css"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
 
 <style>
-
 body{
 background:linear-gradient(to bottom,#fff,#f3e8ff,#fdf2f8);
 overflow-x:hidden;
@@ -26,17 +22,24 @@ background:linear-gradient(45deg,#7c3aed,#9333ea);
 box-shadow:0 10px 20px rgba(124,58,237,.3);
 }
 
+.photo-wrapper {
+display: flex;
+justify-content: center;
+width: 100%;
+}
+
 .photo{
-width:100%;
-max-width:320px;
-border-radius:20px;
-overflow:hidden;
-box-shadow:0 10px 25px rgba(0,0,0,.15);
+width: 100%;
+max-width: 320px;
+border-radius: 20px;
+overflow: hidden;
+box-shadow: 0 10px 25px rgba(0,0,0,.15);
 }
 
 .photo img{
-width:100%;
-display:block;
+width: 100%;
+height: auto;
+display: block;
 }
 
 .card{
@@ -52,168 +55,116 @@ bottom:-50px;
 color:#ff4d6d;
 animation:float 7s linear infinite;
 pointer-events:none;
+z-index: 10;
 }
 
 @keyframes float{
-
 0%{
 transform:translateY(0) scale(.5);
 opacity:1;
 }
-
 100%{
 transform:translateY(-110vh) scale(1.5);
 opacity:0;
 }
-
 }
-
 </style>
-
 </head>
 
-<body class="text-center p-4">
+<body class="text-center p-4 flex flex-col items-center">
 
-<div class="fixed top-4 left-0 right-0 z-50">
-
-<button id="playBtn"
-class="music-btn text-white px-6 py-3 rounded-full font-bold">
-
-<i id="icon" class="fas fa-play"></i>
-
-<span id="text">
-Mana Special Song Play Chey 🎵
-</span>
-
+<div class="fixed top-4 left-0 right-0 z-50 flex justify-center">
+<button id="playBtn" class="music-btn text-white px-6 py-3 rounded-full font-bold transition-transform active:scale-95">
+<i id="icon" class="fas fa-play"></i> <span id="text">Mana Special Song Play Chey 🎵</span>
 </button>
-
 </div>
 
-<audio id="music" loop>
-
+<audio id="music" loop preload="auto">
 <source src="music.mp3" type="audio/mp3">
-
 </audio>
 
-<div class="mt-28">
+<div class="mt-28 w-full max-w-md mx-auto">
 
 <h1 class="text-4xl font-extrabold text-purple-700 animate__animated animate__heartBeat animate__infinite">
-
 I Miss You Bangaram ❤️
-
 </h1>
 
 <p class="mt-3 text-gray-700">
-
 Every moment with you is my favorite memory...
-
 </p>
 
-<div class="mt-12 photo animate__animated animate__fadeInUp">
-
-<img src="photo1.jpeg.png">
-
+<!-- Photo 1 -->
+<div class="mt-12 photo-wrapper animate__animated animate__fadeInUp">
+<div class="photo">
+<img src="photo1.jpeg.png" alt="Photo 1">
+</div>
 </div>
 
 <div class="card mt-5">
-
 <p class="italic text-gray-700">
-
-Mana madhya enni godavalu jarigina mana prema eppatiki thaggadhu...
-
-Nee navvu naa happiness...
-
+Mana madhya enni godavalu jarigina mana prema eppatiki thaggadhu...<br>
+Nee navvu naa happiness...<br>
 I miss you so much Bangaram ❤️
-
 </p>
-
 </div>
 
-<div class="mt-12 photo animate__animated animate__fadeInUp">
-
-<img src="photo2.jpeg.jpg">
-
+<!-- Photo 2 -->
+<div class="mt-12 photo-wrapper animate__animated animate__fadeInUp">
+<div class="photo">
+<img src="photo2.jpeg.jpg" alt="Photo 2">
+</div>
 </div>
 
 <div class="card mt-5">
-
 <p class="italic text-gray-700">
-
-Konni sarlu ninnu badha petta...
-
-Kani ninnu vadulukolekapoya...
-
+Konni sarlu ninnu badha petta...<br>
+Kani ninnu vadulukolekapoya...<br>
 Please naatho matladava Bangaram ❤️
-
 </p>
-
 </div>
+
 <!-- Photo 3 -->
-
-<div class="mt-12 photo animate__animated animate__fadeInUp">
-
+<div class="mt-12 photo-wrapper animate__animated animate__fadeInUp">
+<div class="photo">
 <img src="photo3.jpeg.png" alt="Photo 3">
-
+</div>
 </div>
 
 <div class="card mt-5">
-
 <p class="italic text-gray-700">
-
-Nee chirunavvu chusi chala rojulu ayindi...
-
-Nuvvu pakkana lekapothe edo kolpoyinattu untundi...
-
-Control cheskoleni kopam vachina,
-
-ninnu preminche naa manasu eppatiki maaradhu...
-
+Nee chirunavvu chusi chala rojulu ayindi...<br>
+Nuvvu pakkana lekapothe edo kolpoyinattu untundi...<br>
+Control cheskoleni kopam vachina,<br>
+ninnu preminche naa manasu eppatiki maaradhu...<br>
 ❤️
-
 </p>
-
 </div>
 
 <!-- Photo 4 -->
-
-<div class="mt-12 photo animate__animated animate__fadeInUp">
-
+<div class="mt-12 photo-wrapper animate__animated animate__fadeInUp">
+<div class="photo">
 <img src="photo4.jpeg.jpg" alt="Photo 4">
-
+</div>
 </div>
 
 <div class="card mt-5">
-
 <p class="italic text-gray-700">
-
-Godavalu andari life lo untayi...
-
-Kani mana prema matram eppatiki taggadu...
-
-Nuve naa happiness...
-
-Nuve naa life...
-
+Godavalu andari life lo untayi...<br>
+Kani mana prema matram eppatiki taggadu...<br>
+Nuve naa happiness...<br>
+Nuve naa life...<br>
 Forever Love You Bangaram ❤️
-
 </p>
-
 </div>
 
 <h2 class="text-3xl text-pink-600 font-bold mt-16 animate__animated animate__pulse animate__infinite">
-
 I Will Always Wait For You ❤️
-
 </h2>
 
 <p class="mt-4 text-gray-700">
-
-No matter what happens...
-
-My Love For You Will Never Change...
-
+No matter what happens...<br>
+My Love For You Will Never Change...<br>
 ✨ Forever & Always ✨
-
 </p>
 
 </div>
@@ -221,75 +172,57 @@ My Love For You Will Never Change...
 <div id="hearts"></div>
 
 <script>
-
 const music=document.getElementById("music");
-
 const btn=document.getElementById("playBtn");
-
 const icon=document.getElementById("icon");
-
 const text=document.getElementById("text");
 
 btn.onclick=()=>{
-
 if(music.paused){
-
-music.play();
-
+music.play().then(() => {
 icon.className="fas fa-pause";
-
 text.innerHTML="Song Aapu ⏸️";
-
+}).catch(err => {
+console.log("Audio play fallbacks triggered");
+// Direct absolute source resolution
+const currentUrl = window.location.href;
+music.src = currentUrl.endsWith('/') ? currentUrl + 'music.mp3' : currentUrl + '/music.mp3';
+music.play();
+icon.className="fas fa-pause";
+text.innerHTML="Song Aapu ⏸️";
+});
 }else{
-
 music.pause();
-
 icon.className="fas fa-play";
-
 text.innerHTML="Mana Special Song Play Chey 🎵";
-
 }
-
 };
 
 setInterval(()=>{
-
 const heart=document.createElement("div");
-
 heart.className="heart";
-
 heart.innerHTML="❤";
-
 heart.style.left=Math.random()*100+"vw";
-
 heart.style.fontSize=(20+Math.random()*20)+"px";
-
 heart.style.animationDuration=(4+Math.random()*4)+"s";
-
 document.body.appendChild(heart);
-
 setTimeout(()=>{
-
 heart.remove();
-
 },7000);
-
 },400);
-
 </script>
-<footer class="mt-16 mb-8">
 
+<footer class="mt-16 mb-8 w-full max-w-md mx-auto">
 <p class="text-pink-600 font-bold text-lg">
 ❤️ Forever & Always Yours ❤️
 </p>
-
 <p class="text-gray-500 text-sm mt-2">
 Made With Endless Love 💖
 </p>
-
 </footer>
 
 </body>
 </html>
+
 
 
